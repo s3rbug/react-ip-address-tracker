@@ -1,0 +1,17 @@
+.form {
+	display: flex;
+	justify-content: center;
+	.submit {
+		background: black;
+		padding: 10px 20.5px;
+		border-top-right-radius: 15px;
+		border-bottom-right-radius: 15px;
+	}
+	.ipInput {
+		border-top-left-radius: 15px;
+		border-bottom-left-radius: 15px;
+		width: 30%;
+		min-width: 400px;
+		padding: 15px 20px;
+	}
+}
