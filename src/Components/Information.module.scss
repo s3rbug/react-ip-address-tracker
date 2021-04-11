@@ -10,10 +10,10 @@ $darkGray: hsl(0, 0%, 17%);
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 15px;
-	margin-bottom: -25px;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	margin-bottom: -40px;
+	padding: 25px;
 	min-width: 900px;
+	z-index: 1000;
 	.title {
 		color: $lightGray;
 		font-size: 14px;
@@ -32,6 +32,7 @@ $darkGray: hsl(0, 0%, 17%);
 	}
 	.title,
 	.content {
-		padding-left: 40px;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 }
