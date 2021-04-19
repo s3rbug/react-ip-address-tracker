@@ -1,7 +1,9 @@
-import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { ReactComponent as IconArrow } from "../images/icon-arrow.svg";
-import validator from "ip-validator";
+import { updateIp } from "../redux/middleware/map";
+import { validateIP } from "../utils/IPValidator";
 import classes from "./Form.module.scss";
 
 type FormReturnType = {
@@ -9,13 +11,16 @@ type FormReturnType = {
 };
 
 const Form = () => {
-	const {
-		handleSubmit,
-		register,
-		formState: { errors },
-	} = useForm();
+	const { handleSubmit, register, reset } = useForm();
+
+	const dispatch = useDispatch();
 	const onSubmit = (value: FormReturnType) => {
-		console.log(value.ip, validator.ip(value.ip));
+		if (validateIP(value.ip)) {
+			dispatch(updateIp(value.ip));
+			reset();
+		} else {
+			toast.warn(`'${value.ip}' is incorrect IP address`);
+		}
 	};
 
 	return (
@@ -23,9 +28,8 @@ const Form = () => {
 			<input
 				className={classes.ipInput}
 				placeholder="Search for any IP address or domain"
-				{...register("ip", { required: true, validate: validator.ip })}
+				{...register("ip", { required: true })}
 			/>
-			{errors.ip && "Error"}
 			<button className={classes.submit} type="submit">
 				<IconArrow />
 			</button>
