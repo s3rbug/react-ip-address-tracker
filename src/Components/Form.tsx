@@ -12,14 +12,13 @@ type FormReturnType = {
 
 const Form = () => {
 	const { handleSubmit, register, reset } = useForm();
-
 	const dispatch = useDispatch();
 	const onSubmit = (value: FormReturnType) => {
 		if (validateIP(value.ip)) {
 			dispatch(updateIp(value.ip));
 			reset();
 		} else {
-			toast.warn(`'${value.ip}' is incorrect IP address`);
+			toast.error(`'${value.ip}' is incorrect IP address`);
 		}
 	};
 

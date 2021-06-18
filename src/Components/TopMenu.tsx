@@ -1,4 +1,3 @@
-import React from "react";
 import Form from "./Form";
 import Information from "./Information";
 import classes from "./TopMenu.module.scss";
